@@ -226,7 +226,6 @@
     }
   }
 
-  /* ✅ SOLO ajustes responsive (sin tocar desktop) */
   @media (max-width: $bp-tablet) {
     &__top {
       padding: 1rem 2rem;
@@ -255,7 +254,6 @@
         gap: 0.4rem;
         text-align: left;
 
-        /* Solo aplica en pantallas pequeñas */
         @media (max-width: 600px) {
           align-items: center;
           text-align: center;

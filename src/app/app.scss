@@ -42,18 +42,15 @@ app-sidebar {
   overflow-y: auto;
   background-color: #fafafa;
 
-  // En pantallas pequeñas (menores a tablet)
   @media (max-width: $bp-tablet) {
     margin-left: 0;
   }
 }
 
-/* Sidebar abierto en pantallas grandes */
 .main-content.sidebar-open {
   margin-left: 60px;
 
   @media (max-width: $bp-tablet) {
-    margin-left: 0; // no empuja contenido en móviles
+    margin-left: 0;
   }
 }
-
