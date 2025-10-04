@@ -1,0 +1,120 @@
+@import '../../styles.scss';
+
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-white;
+  padding: 1rem 1.5rem;
+  height: 60px;
+  box-shadow: 0px 0px 6px #00000029;
+  opacity: 1;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 6.5rem;
+}
+
+.menu-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: $color-brand-primary;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+
+  .logo-img {
+    height: 20px;
+  }
+
+  .separator {
+    width: 3px;
+    height: 28px;
+    background: $color-text-medium;
+    margin: 0 10px;
+  }
+
+  .logo-slogan {
+    font-size: 18px;
+    font-family: $font-family-secondary;
+    color: $color-text-medium;
+    padding-left: 0;
+    cursor: default;
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.utility-link {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-bold;
+  color: $color-brand-primary;
+  cursor: default;
+
+  .link-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+}
+
+.link-help-container {
+  position: relative;
+  padding-right: 15px;
+  margin-right: 6.5rem;
+
+  .icon-question {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .help-text {
+    font-size: 10px;
+    font-family: $font-family-primary;
+    font-weight: $font-weight-bold;
+    text-decoration: underline;
+    color: $color-brand-primary;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 32px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  &:hover {
+    .icon-question {
+      transform: scale(calc(20px / 32px));
+    }
+
+    .help-text {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .header-right {
+    .utility-link {
+      display: none;
+    }
+  }
+  .header-left {
+    gap: 2rem;
+  }
+}
