@@ -1,0 +1,59 @@
+@import '../styles.scss';
+
+:host {
+  display: block;
+}
+
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1100;
+}
+
+app-sidebar {
+  position: fixed;
+  top: 93px;
+  left: 0;
+  height: calc(100vh - 60px);
+  width: 220px;
+  z-index: 2000;
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: $bp-tablet) {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 3000;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.main-content {
+  margin-left: 60px;
+  margin-top: 92px;
+  padding-top: 1px;
+  transition: none;
+  min-height: calc(100vh - 60px);
+  overflow-y: auto;
+  background-color: #fafafa;
+
+  // En pantallas pequeñas (menores a tablet)
+  @media (max-width: $bp-tablet) {
+    margin-left: 0;
+  }
+}
+
+/* Sidebar abierto en pantallas grandes */
+.main-content.sidebar-open {
+  margin-left: 60px;
+
+  @media (max-width: $bp-tablet) {
+    margin-left: 0; // no empuja contenido en móviles
+  }
+}
+
