@@ -1,0 +1,84 @@
+@import '../../styles.scss';
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .cards-wrapper {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    overflow-x: hidden; // ocultar scrollbar
+    scroll-behavior: smooth;
+    flex-wrap: nowrap;
+
+    /* Ocultar scrollbar en todos los navegadores */
+    -ms-overflow-style: none; /* IE y Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari y Opera */
+    }
+  }
+
+  .icon-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+    z-index: 1010;
+    cursor: pointer;
+
+    &.sidebar-open {
+      left: 60px; // cuando el sidebar está abierto
+    }
+
+    &.sidebar-closed {
+      left: 16px; // cuando el sidebar está cerrado
+    }
+
+    &.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  .icon-next {
+    right: 80px; // movemos hacia adentro (antes estaba 16px)
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1010;
+    cursor: pointer;
+
+    &.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  .special-card-wrapper {
+    flex-shrink: 0;
+  }
+}
+
+.button-slider {
+  width: 260px;
+  height: 50px;
+  padding: 16px;
+  background-color: $color-background-lighter;
+  color: $color-text-medium;
+  border-radius: 25px;
+  border-color: transparent;
+
+  display: block;
+  margin: 32px auto;
+}
+
+.special-content {
+  margin-top: 24px;
+  padding: 16px;
+  background: $color-background-soft;
+  border-radius: 8px;
+}
