@@ -1,11 +1,7 @@
 <div class="slider-container">
-  <img
-    src="assets/Group 9764-1.png"
-    alt="prev"
-    class="icon-prev"
-    (click)="scrollLeft()"
-    [class.disabled]="!canScrollPrev()"
-  />
+  <button class="icon-prev" [class.disabled]="!canScrollPrev()" (click)="scrollLeft()">
+    <img src="assets/Group 9764-1.png" alt="prev" />
+  </button>
 
   <div class="cards-wrapper" #cardsWrapper>
     @for (card of cards(); track card.title) {
@@ -21,25 +17,73 @@
     }
 
     <div class="special-card-wrapper">
-      <button class="button-special-card" (click)="!showSpecialContent()">Explora ahora</button>
+      <button
+        class="button-special-card"
+        [class.active]="isSpecialCardActive()"
+        [disabled]="!isSpecialCardActive()"
+        (click)="goToSpecialContent()"
+      >
+        Explora ahora
+      </button>
 
       <div class="card-footer" [style.background]="borderColorSpecialCard"></div>
     </div>
   </div>
 
-  <img
-    src="assets/Group 9764-1.png"
-    alt="next"
-    class="icon-next"
-    (click)="scrollRight()"
-    [class.disabled]="!canScrollNext()"
-  />
+  <button class="icon-next" [class.disabled]="!canScrollNext()" (click)="scrollRight()">
+    <img src="assets/Group 9764-1.png" alt="next" />
+  </button>
 </div>
 
 <button class="button-slider">ASOCIAR A OBJETIVO</button>
 
-@if (showSpecialContent()){
+@if (showSpecialContent()) {
 <div class="special-content">
-  <p>Contenido renderizado al presionar la card especial</p>
+  <div class="special-container">
+    <div class="special-card">
+      <div class="card-image">
+        <img src="assets/Mask Group 27.png" alt="Imagen card" />
+        <div class="elements-top">
+          <span>Ahorro e inversión</span>
+          <fa-icon [icon]="faHeart" class="nav-icon" />
+        </div>
+      </div>
+
+      <div class="card-text">
+        <p class="line1">
+          ¡Fondo de inversión Colectiva,<br />
+          <strong>la acción para potenciar tu capital y hacer real tu objetivo!</strong>
+        </p>
+
+        <a class="link-green">Conoce más</a>
+
+        <div class="icons-row">
+          <div class="icon-item">
+            <img src="assets/world.png" alt="icon1" />
+            <span class="icon-text-small"
+              >Rentabilidades mínimas del <strong>3% anuales</strong></span
+            >
+          </div>
+          <div class="icon-item">
+            <img src="assets/profile.png" alt="icon2" />
+            <span class="icon-text-small"
+              ><strong>4.000 clientes</strong> confían en este producto</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+
+    <div class="indicators">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <div class="arrow-right">
+      <img src="assets/Group 9764-1.png" alt="next" />
+    </div>
+  </div>
 </div>
 }

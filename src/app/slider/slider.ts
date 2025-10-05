@@ -1,14 +1,8 @@
-import {
-  Component,
-  signal,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  Input,
-} from '@angular/core';
+import { Component, signal, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Card } from '../card/card';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 interface ApiCard {
   nameProduct: string;
@@ -29,21 +23,21 @@ interface CardData {
 
 @Component({
   selector: 'app-slider',
-  imports: [Card],
+  imports: [Card, FontAwesomeModule],
   templateUrl: './slider.html',
   styleUrls: ['./slider.scss'],
 })
 export class SliderComponent implements OnInit, AfterViewInit {
   cards = signal<CardData[]>([]);
+  faHeart = faHeart;
   showSpecialContent = signal(false);
-  @Input() sidebarVisible = signal(false);
+  specialCardActivated = signal(false);
+  maxScroll = 0;
   borderColorSpecialCard = '#A4D071';
 
   @ViewChild('cardsWrapper') cardsWrapper!: ElementRef<HTMLDivElement>;
 
   apiUrl = 'https://62e152f8fa99731d75d44571.mockapi.io/api/v1/test-front-end-skandia/cards';
-
-  private maxScroll = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -90,34 +84,32 @@ export class SliderComponent implements OnInit, AfterViewInit {
     return colors[index] || '#c4c7c4';
   }
 
-  onSpecialButtonClick() {
-    this.showSpecialContent.set(!this.showSpecialContent());
-  }
-
   scrollLeft() {
-    if (!this.cardsWrapper) return;
-
     const el = this.cardsWrapper.nativeElement;
-    const scrollAmount = el.clientWidth; // desplazamiento igual a lo visible
+    const scrollAmount = el.clientWidth;
     el.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-
-    // actualizar el maxScroll por si cambió
     setTimeout(() => this.updateMaxScroll(), 200);
+
+    if (el.scrollLeft <= 0) {
+      this.showSpecialContent.set(false);
+      this.specialCardActivated.set(false);
+    }
   }
 
   scrollRight() {
-    if (!this.cardsWrapper) return;
-
     const el = this.cardsWrapper.nativeElement;
-    const scrollAmount = el.clientWidth; // desplazamiento igual a lo visible
+    const scrollAmount = el.clientWidth;
     el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-
     setTimeout(() => this.updateMaxScroll(), 200);
+
+    if (el.scrollLeft >= this.maxScroll) {
+      this.specialCardActivated.set(true);
+    }
   }
 
   canScrollPrev() {
     if (!this.cardsWrapper) return false;
-    return this.cardsWrapper.nativeElement.scrollLeft > 5; // margen pequeño
+    return this.cardsWrapper.nativeElement.scrollLeft > 5;
   }
 
   canScrollNext() {
@@ -125,10 +117,26 @@ export class SliderComponent implements OnInit, AfterViewInit {
     return this.cardsWrapper.nativeElement.scrollLeft < this.maxScroll - 5;
   }
 
-  private updateMaxScroll() {
-    if (this.cardsWrapper) {
-      const el = this.cardsWrapper.nativeElement;
-      this.maxScroll = el.scrollWidth - el.clientWidth;
+  isSpecialCardActive() {
+    return this.specialCardActivated();
+  }
+
+  goToSpecialContent() {
+    if (!this.isSpecialCardActive()) return;
+
+    this.showSpecialContent.set(true);
+    this.specialCardActivated.set(false);
+
+    // Scroll suave al contenido condicional
+    const section = document.querySelector('special-content');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  private updateMaxScroll() {
+    if (!this.cardsWrapper) return;
+    const el = this.cardsWrapper.nativeElement;
+    this.maxScroll = el.scrollWidth - el.clientWidth;
   }
 }
