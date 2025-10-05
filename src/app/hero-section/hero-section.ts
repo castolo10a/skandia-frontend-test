@@ -4,10 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-hero-section',
   imports: [],
   templateUrl: './hero-section.html',
-  styleUrl: './hero-section.scss'
+  styleUrl: './hero-section.scss',
 })
 export class HeroSection {
-  handleGoCards = ()=> {
-    alert('debe llevar a la seccion de las cards')
-  }
+  handleGoCards = () => {
+    const element = document.getElementById('cards-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 }
