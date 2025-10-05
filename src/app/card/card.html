@@ -1,5 +1,5 @@
 <div class="card">
-  <div style="padding: 16px;">
+  <div style="padding: 16px">
     <input type="checkbox" class="card-checkbox" />
 
     <div class="card-header">
@@ -16,7 +16,7 @@
 
     <div class="mini-card">
       <img [src]="miniCardIcon" alt="icon" class="mini-icon" />
-      <span>{{ miniCardText }}</span>
+      <span [innerHTML]="formatMiniCardText()"></span>
     </div>
   </div>
 
