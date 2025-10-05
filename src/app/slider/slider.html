@@ -1,5 +1,4 @@
 <div class="slider-container">
-  <!-- Botón de scroll izquierda -->
   <img
     src="assets/Group 9764-1.png"
     alt="prev"
@@ -8,7 +7,6 @@
     [class.disabled]="!canScrollPrev()"
   />
 
-  <!-- Contenedor de cards -->
   <div class="cards-wrapper" #cardsWrapper>
     @for (card of cards(); track card.title) {
     <app-card
@@ -22,24 +20,13 @@
     ></app-card>
     }
 
-    <!-- Card especial -->
     <div class="special-card-wrapper">
-      <app-card
-        title="Especial"
-        hashtag="Especial"
-        subtitle="Card Especial"
-        text="Esta card permite renderizar contenido condicional"
-        miniCardText="Mini texto"
-        miniCardIcon="assets/special-icon.png"
-        borderColor="#fe9200"
-      >
-        <!-- Botón interno de la card especial -->
-        <button class="button-special" (click)="onSpecialButtonClick()">Explora Ahora</button>
-      </app-card>
+      <button class="button-special-card" (click)="!showSpecialContent()">Explora ahora</button>
+
+      <div class="card-footer" [style.background]="borderColorSpecialCard"></div>
     </div>
   </div>
 
-  <!-- Botón de scroll derecha -->
   <img
     src="assets/Group 9764-1.png"
     alt="next"
@@ -49,10 +36,8 @@
   />
 </div>
 
-<!-- Botón independiente debajo del slider -->
 <button class="button-slider">ASOCIAR A OBJETIVO</button>
 
-<!-- Contenido condicional que se muestra al presionar la card especial -->
 @if (showSpecialContent()){
 <div class="special-content">
   <p>Contenido renderizado al presionar la card especial</p>

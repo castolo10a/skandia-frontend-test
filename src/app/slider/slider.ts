@@ -37,6 +37,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   cards = signal<CardData[]>([]);
   showSpecialContent = signal(false);
   @Input() sidebarVisible = signal(false);
+  borderColorSpecialCard = '#A4D071';
 
   @ViewChild('cardsWrapper') cardsWrapper!: ElementRef<HTMLDivElement>;
 

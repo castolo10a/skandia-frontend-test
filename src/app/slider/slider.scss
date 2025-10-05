@@ -9,31 +9,30 @@
     display: flex;
     gap: 16px;
     padding: 16px;
-    overflow-x: hidden; // ocultar scrollbar
+    overflow-x: hidden;
     scroll-behavior: smooth;
     flex-wrap: nowrap;
 
-    /* Ocultar scrollbar en todos los navegadores */
-    -ms-overflow-style: none; /* IE y Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     &::-webkit-scrollbar {
-      display: none; /* Chrome, Safari y Opera */
+      display: none;
     }
   }
 
   .icon-prev {
     position: absolute;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%) rotate(180deg);
     z-index: 1010;
     cursor: pointer;
 
     &.sidebar-open {
-      left: 60px; // cuando el sidebar está abierto
+      left: 120px;
     }
 
     &.sidebar-closed {
-      left: 16px; // cuando el sidebar está cerrado
+      left: 160px;
     }
 
     &.disabled {
@@ -44,9 +43,9 @@
   }
 
   .icon-next {
-    right: 80px; // movemos hacia adentro (antes estaba 16px)
+    right: 80px;
     position: absolute;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     z-index: 1010;
     cursor: pointer;
@@ -57,16 +56,24 @@
       cursor: default;
     }
   }
+}
 
-  .special-card-wrapper {
-    flex-shrink: 0;
-  }
+.special-card-wrapper {
+  position: relative;
+  border-radius: 4px;
+  background: url('../../../public/assets/Group 12973.png');
+  box-shadow: 0 2px 5px rgba($color-shadow-opacity, 0.1);
+  width: 250px;
+  height: 299px;
 }
 
 .button-slider {
   width: 260px;
   height: 50px;
   padding: 16px;
+  font-size: 16px;
+  font-family: $font-family-secondary;
+  font-weight: $font-weight-bold;
   background-color: $color-background-lighter;
   color: $color-text-medium;
   border-radius: 25px;
@@ -76,9 +83,28 @@
   margin: 32px auto;
 }
 
-.special-content {
-  margin-top: 24px;
-  padding: 16px;
-  background: $color-background-soft;
-  border-radius: 8px;
+.button-special-card {
+  position: absolute;
+  bottom: 130px;
+  left: 20px;
+  padding: 8px;
+  background-color: $color-brand-primary;
+  color: $color-white;
+  border-radius: 25px;
+  font-size: 14px;
+  font-family: $font-family-secondary;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  border-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.card-footer {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
