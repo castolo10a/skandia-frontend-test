@@ -7,21 +7,23 @@
 
   .footer-container {
     display: flex;
-    justify-content: space-around; // centra las columnas horizontalmente
-    align-items: flex-end; // alinea el contenido al inicio verticalmente
-    // flex-wrap: wrap;
-    // gap: 80px; // espacio entre columnas
-    // max-width: 1200px;
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+    max-width: 1200px;
     margin: 0 auto;
     cursor: default;
+
+    justify-content: center;
 
     .footer-column {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      align-items: flex-start; // centra el contenido dentro de cada columna
+      align-items: center;
 
       &.logo-column {
+        align-items: center;
         .footer-logo {
           width: 120px;
           height: auto;
@@ -31,7 +33,7 @@
         p {
           font-size: 12px;
           color: $color-text-medium;
-          text-align: left; // texto centrado
+          text-align: center;
         }
 
         .cellphone-data {
@@ -48,7 +50,7 @@
           display: flex;
           flex-direction: column;
           gap: 4px;
-          align-items: left; // centra los links
+          align-items: center;
 
           li a {
             text-decoration: underline;
@@ -72,6 +74,52 @@
           }
         }
       }
+    }
+
+    @media (min-width: $bp-mobile) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      .footer-column {
+        align-items: flex-start;
+
+        &.logo-column {
+          width: 100%;
+          order: -1;
+          align-items: flex-start;
+          .contact-info,
+          p {
+            text-align: left;
+          }
+        }
+
+        &.links-column {
+          ul {
+            align-items: flex-start;
+          }
+        }
+      }
+    }
+
+    @media (min-width: $bp-tablet) {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 0;
+
+      .footer-column {
+        &.logo-column {
+          width: auto;
+          order: 0;
+        }
+
+        flex-basis: 200px;
+      }
+    }
+
+    @media (min-width: $bp-desktop) {
+      justify-content: space-around;
     }
   }
 }
