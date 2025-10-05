@@ -12,6 +12,10 @@
   flex-direction: column;
   justify-content: space-between;
 
+  &:hover {
+    box-shadow: 0 0 12px rgba($color-brand-primary, 0.5);
+  }
+
   .card-checkbox {
     position: absolute;
     top: 8px;
