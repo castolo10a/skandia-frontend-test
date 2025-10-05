@@ -40,7 +40,9 @@ app-sidebar {
   transition: none;
   min-height: calc(100vh - 60px);
   overflow-y: auto;
-  background-color: #fafafa;
+  background: url('../../public/assets/iStock-480003814.png') no-repeat center top;
+  background-size: cover;
+  background-attachment: fixed;
 
   @media (max-width: $bp-tablet) {
     margin-left: 0;
