@@ -1,0 +1,77 @@
+@import '../../styles.scss';
+
+.footer {
+  background-color: #f5f5f5;
+  padding: 32px 16px;
+  font-family: $font-family-primary;
+
+  .footer-container {
+    display: flex;
+    justify-content: space-around; // centra las columnas horizontalmente
+    align-items: flex-end; // alinea el contenido al inicio verticalmente
+    // flex-wrap: wrap;
+    // gap: 80px; // espacio entre columnas
+    // max-width: 1200px;
+    margin: 0 auto;
+    cursor: default;
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start; // centra el contenido dentro de cada columna
+
+      &.logo-column {
+        .footer-logo {
+          width: 120px;
+          height: auto;
+        }
+
+        .contact-info,
+        p {
+          font-size: 12px;
+          color: $color-text-medium;
+          text-align: left; // texto centrado
+        }
+
+        .cellphone-data {
+          color: $color-brand-primary;
+          font-weight: $font-weight-bold;
+        }
+      }
+
+      &.links-column {
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          align-items: left; // centra los links
+
+          li a {
+            text-decoration: underline;
+            color: $color-text-medium;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+
+      &.social-column {
+        .social-icons {
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+
+          img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
