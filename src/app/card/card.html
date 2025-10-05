@@ -1,0 +1,24 @@
+<div class="card">
+  <div style="padding: 16px;">
+    <input type="checkbox" class="card-checkbox" />
+
+    <div class="card-header">
+      <h4>{{ title }}</h4>
+      <span class="hashtag">#{{ hashtag }}</span>
+    </div>
+
+    <hr />
+
+    <div class="card-body">
+      <h5>{{ subtitle }}</h5>
+      <p>{{ text }}</p>
+    </div>
+
+    <div class="mini-card">
+      <img [src]="miniCardIcon" alt="icon" class="mini-icon" />
+      <span>{{ miniCardText }}</span>
+    </div>
+  </div>
+
+  <div class="card-footer" [style.background]="borderColor"></div>
+</div>

@@ -1,0 +1,114 @@
+@import '../../styles.scss';
+
+.card {
+  position: relative;
+  border-radius: 4px;
+  background: $color-white;
+  box-shadow: 0 2px 5px rgba($color-shadow-opacity, 0.1);
+  width: 250px;
+  font-family: $font-family-primary;
+
+  .card-checkbox {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    appearance: none; // quita estilo por defecto
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: default;
+    border: 2px solid $color-brand-primary;
+    border-radius: 3px;
+    background: $color-white;
+
+    &:hover,
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column; // fuerza que h4 y span estén en columna
+    align-items: flex-start; // alineados a la izquierda
+    margin-top: 24px; // deja espacio debajo del checkbox
+    margin-bottom: 24px;
+    gap: 4px; // espacio entre h4 y span
+
+    h4 {
+      margin: 0;
+      color: $color-text-darkest;
+    }
+
+    .hashtag {
+      font-size: 12px;
+      color: $color-text-medium;
+    }
+  }
+
+  .card-header hr {
+    margin: 8px 0;
+    border-color: $color-border-light;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 24px;
+
+    h5,
+    p {
+      margin: 0;
+    }
+
+    h5 {
+      font-weight: $font-weight-bold;
+      font-size: 0.9rem;
+      color: $color-text-darkest;
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: $color-brand-primary;
+    }
+  }
+
+  .mini-card {
+    position: relative;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 8px 8px 8px;
+    background: $color-background-soft;
+    text-align: center;
+
+    .mini-icon {
+      position: absolute;
+      top: -18px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    span {
+      font-size: 0.6rem;
+      color: $color-text-medium;
+    }
+  }
+
+  .card-footer {
+    height: 4px;
+    margin-top: auto; // espacio entre mini-card y footer
+    width: 100%;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+}
