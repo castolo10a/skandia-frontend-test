@@ -6,7 +6,11 @@
   background: $color-white;
   box-shadow: 0 2px 5px rgba($color-shadow-opacity, 0.1);
   width: 250px;
+  height: 299px;
   font-family: $font-family-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .card-checkbox {
     position: absolute;
@@ -14,7 +18,7 @@
     right: 8px;
     width: 16px;
     height: 16px;
-    appearance: none; // quita estilo por defecto
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     cursor: default;
@@ -31,11 +35,11 @@
 
   .card-header {
     display: flex;
-    flex-direction: column; // fuerza que h4 y span estén en columna
-    align-items: flex-start; // alineados a la izquierda
-    margin-top: 24px; // deja espacio debajo del checkbox
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 24px;
     margin-bottom: 24px;
-    gap: 4px; // espacio entre h4 y span
+    gap: 4px;
 
     h4 {
       margin: 0;
@@ -57,12 +61,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
     margin-bottom: 24px;
+    margin-top: 24px;
 
     h5,
     p {
-      margin: 0;
+      margin: 6px;
     }
 
     h5 {
@@ -83,7 +87,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 12px 8px 8px 8px;
     background: $color-background-soft;
     text-align: center;
@@ -106,7 +110,7 @@
 
   .card-footer {
     height: 4px;
-    margin-top: auto; // espacio entre mini-card y footer
+    margin-top: auto;
     width: 100%;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
