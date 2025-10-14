@@ -46,7 +46,10 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => this.updateMaxScroll(), 100);
+    setTimeout(() => this.updateMaxScroll(), 300);
+
+    const el = this.cardsWrapper.nativeElement;
+    el.addEventListener('scroll', () => this.updateMaxScroll());
   }
 
   fetchCards() {
@@ -87,24 +90,30 @@ export class SliderComponent implements OnInit, AfterViewInit {
   scrollLeft() {
     const el = this.cardsWrapper.nativeElement;
     const scrollAmount = el.clientWidth;
-    el.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    setTimeout(() => this.updateMaxScroll(), 200);
 
-    if (el.scrollLeft <= 0) {
-      this.showSpecialContent.set(false);
-      this.specialCardActivated.set(false);
-    }
+    el.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+
+    setTimeout(() => {
+      this.updateMaxScroll();
+      if (el.scrollLeft <= 5) {
+        this.showSpecialContent.set(false);
+        this.specialCardActivated.set(false);
+      }
+    }, 400);
   }
 
   scrollRight() {
     const el = this.cardsWrapper.nativeElement;
     const scrollAmount = el.clientWidth;
-    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    setTimeout(() => this.updateMaxScroll(), 200);
 
-    if (el.scrollLeft >= this.maxScroll) {
-      this.specialCardActivated.set(true);
-    }
+    el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+    setTimeout(() => {
+      this.updateMaxScroll();
+      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 10) {
+        this.specialCardActivated.set(true);
+      }
+    }, 400);
   }
 
   canScrollPrev() {
@@ -127,7 +136,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
     this.showSpecialContent.set(true);
     this.specialCardActivated.set(false);
 
-    // Scroll suave al contenido condicional
     const section = document.querySelector('special-content');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
