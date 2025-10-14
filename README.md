@@ -1,59 +1,93 @@
-# SkandiaFrontendTest
+Skandia Frontend Test – Landing Page
+====================================
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+Este repositorio contiene el proyecto frontend creado como parte de la prueba técnica para Skandia. Es una landing page construida con Angular y completamente estilizada usando SCSS. El proyecto utiliza únicamente la configuración por defecto de Angular — no se instalaron librerías adicionales.
 
-## Development server
+Tecnologías Utilizadas
+----------------------
 
-To start a local development server, run:
+*   **Angular CLI 20.3.4**: Para crear y gestionar la aplicación.
+    
+*   **TypeScript**: Para tipado y desarrollo de la lógica.
+    
+*   **SCSS (Sass)**: Para los estilos de la aplicación.
+    
+*   **HTML5 / CSS3**: Estructura y estilo básico.
+    
+
+Cómo Ejecutar el Proyecto Localmente
+------------------------------------
+
+Sigue estos pasos para clonar el repositorio y ejecutar el proyecto en tu máquina local:
+
+### 1\. Clona el repositorio
 
 ```bash
+`git clone`
+```
+### 2\. Navega al directorio del proyecto
+```bash 
+cd skandia-frontend-test
+```
+
+### 3\. Instala las dependencias
+
+```bash 
+npm install
+```
+
+### 4\. Inicia la aplicación en modo de desarrollo
+
+```bash 
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Esto abrirá la aplicación en tu navegador en:
 
 ```bash
-ng generate component component-name
+http://localhost:4200/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+> La aplicación se recargará automáticamente si realizas cambios en el código.
 
-```bash
-ng generate --help
+Estructura del Proyecto
+-----------------------
+
+```bach
+src/
+└── app/
+     ├── components/  # Todos los componentes reutilizables de la landing page
+     └── app.component.ts
 ```
 
-## Building
+> Dado que el proyecto es pequeño, no se crearon carpetas separadas para layouts, templates o UI.
 
-To build the project run:
+Screenshots
+-----------
 
-```bash
-ng build
-```
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/954d6da6-7549-46cf-960c-f0f18e75c5e0" />
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ee192ef8-0e4d-47bb-b4bb-dbfec58b753c" />
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
+Notas
+-----
 
-## Running end-to-end tests
+*   La landing page es **funcional y esta estilizada con SCSS**.
+    
+*   **No se utilizaron librerías externas**, solo Angular por defecto.
+    
+*   Todos los componentes están dentro de src/app.
+    
+*   No se implementaron tests unitarios ni end-to-end debido a limitaciones de tiempo.
+    
 
-For end-to-end (e2e) testing, run:
+Más Información
+---------------
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*   Para aprender más sobre Angular, visita la [documentación oficial](https://angular.dev/).
+    
+*   Para aprender más sobre SCSS, visita la [documentacion Oficial](https://sass-lang.com/documentation/).
+    
+*   Para aprender más sobre TypeScript, visita la [documentación oficial](https://www.typescriptlang.org/docs/).
